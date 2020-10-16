@@ -1,0 +1,32 @@
+{
+  "name": "@petr-ptacek/js-utils",
+  "version": "1.0.0",
+  "description": "JavaScript library with helper functions.",
+  "main": "./dist/js-utils.cmj.min.js",
+  "module": "./dist/js-utils.esm.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./dist ./types",
+    "build:types": "tsc --declaration --declarationMap --emitDeclarationOnly --declarationDir ./types",
+    "build": "npm run clean && rollup -c && npm run build:types",
+    "test": "jest --config ./jest.config.js",
+    "test:watch": "npm run test -- --watchAll --notify"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.5.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.30.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
