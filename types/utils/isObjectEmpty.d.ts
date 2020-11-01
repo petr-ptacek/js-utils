@@ -1,1 +1,1 @@
-export declare const isObjectEmpty: (value: Object) => boolean;
+export declare function isObjectEmpty(value: Object): boolean;

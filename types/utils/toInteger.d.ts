@@ -1,1 +1,1 @@
-export declare const toInteger: (value: number) => number;
+export declare function toInteger(value: number): number;

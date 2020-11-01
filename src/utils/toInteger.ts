@@ -2,4 +2,6 @@
  * @param {number} value
  * @returns {number}
  */
-export const toInteger = (value: number): number => value | 0;
+export function toInteger(value: number): number {
+  return value | 0;
+}

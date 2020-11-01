@@ -13,35 +13,51 @@ var checkJSType = function (value, expectedType) {
     return Object.prototype.toString.call(value) === expectedType;
 };
 
-var isFunction = function (value) { return checkJSType(value, JSTypes.Function); };
+function isFunction(value) {
+    return checkJSType(value, JSTypes.Function);
+}
 
-var isString = function (value) { return checkJSType(value, JSTypes.String); };
+function isString(value) {
+    return checkJSType(value, JSTypes.String);
+}
 
-var isObjectEmpty = function (value) {
+function isObjectEmpty(value) {
     return checkJSType(value, JSTypes.Object) && !Object.keys(value).length;
-};
+}
 
-var isObject = function (value) {
+function isObject(value) {
     return !checkJSType(value, JSTypes.Null) && checkJSType(value, JSTypes.Object);
-};
+}
 
-var isNull = function (value) { return checkJSType(value, JSTypes.Null); };
+function isNull(value) {
+    return checkJSType(value, JSTypes.Null);
+}
 
-var isUndefined = function (value) {
+function isUndefined(value) {
     return checkJSType(value, JSTypes.Undefined);
-};
+}
 
-var isNullOrUndefined = function (value) { return isNull(value) || isUndefined(value); };
+function isNullOrUndefined(value) {
+    return isNull(value) || isUndefined(value);
+}
 
-var isPromise = function (value) { return checkJSType(value, JSTypes.Promise); };
+function isPromise(value) {
+    return checkJSType(value, JSTypes.Promise);
+}
 
-var isNumber = function (value) { return checkJSType(value, JSTypes.Number); };
+function isNumber(value) {
+    return checkJSType(value, JSTypes.Number);
+}
 
-var isBoolean = function (value) { return checkJSType(value, JSTypes.Boolean); };
+function isBoolean(value) {
+    return checkJSType(value, JSTypes.Boolean);
+}
 
-var toInteger = function (value) { return value | 0; };
+function toInteger(value) {
+    return value | 0;
+}
 
-var downloadFile = function (_a) {
+function downloadFile(_a) {
     var fileName = _a.fileName, fileUrl = _a.fileUrl;
     var link = window.document.createElement('a');
     link.style.display = 'none';
@@ -51,7 +67,7 @@ var downloadFile = function (_a) {
     window.document.body.appendChild(link);
     link.click();
     window.document.body.removeChild(link);
-};
+}
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -106,36 +122,42 @@ function __generator(thisArg, body) {
     }
 }
 
-var execAsync = function (promise) { return __awaiter(void 0, void 0, void 0, function () {
-    var result, _a, e_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                result = { data: null, error: null };
-                _b.label = 1;
-            case 1:
-                _b.trys.push([1, 3, , 4]);
-                _a = result;
-                return [4, promise];
-            case 2:
-                _a.data = _b.sent();
-                return [3, 4];
-            case 3:
-                e_1 = _b.sent();
-                result.error = e_1;
-                return [3, 4];
-            case 4: return [2, result];
-        }
+function execAsync(promise) {
+    return __awaiter(this, void 0, void 0, function () {
+        var result, _a, e_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    result = { data: null, error: null };
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    _a = result;
+                    return [4, promise];
+                case 2:
+                    _a.data = _b.sent();
+                    return [3, 4];
+                case 3:
+                    e_1 = _b.sent();
+                    result.error = e_1;
+                    return [3, 4];
+                case 4: return [2, result];
+            }
+        });
     });
-}); };
+}
 
-var uuid = (function (id) {
+var _uuid = (function (id) {
     if (id === void 0) { id = 0; }
     return function (message) {
         if (message === void 0) { message = ''; }
         return "" + message + ++id;
     };
 })();
+function uuid(message) {
+    if (message === void 0) { message = ''; }
+    return _uuid(message);
+}
 
 var _getStorage = function (type) {
     return type === 'session' ? window.sessionStorage : window.localStorage;
@@ -169,7 +191,7 @@ var WindowStorage = (function () {
     return WindowStorage;
 }());
 
-var getNestedObjVal = function (object, path, defaultValue) {
+function getNestedObjVal(object, path, defaultValue) {
     var chunks = Array.isArray(path) ?
         path :
         path.replace(/\[(\w+)]/g, '.$1').replace(/^\./, '').split(/\./g);
@@ -182,6 +204,6 @@ var getNestedObjVal = function (object, path, defaultValue) {
         isUndefined(result) ?
             defaultValue :
             result;
-};
+}
 
 export { WindowStorage, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, toInteger, uuid };

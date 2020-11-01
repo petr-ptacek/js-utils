@@ -1,1 +1,1 @@
-export declare const uuid: (message?: string) => string;
+export declare function uuid(message?: string): string;

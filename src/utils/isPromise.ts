@@ -4,4 +4,6 @@ import { checkJSType, JSTypes } from '@/helpers';
  * @param {*} value
  * @returns {boolean}
  */
-export const isPromise = (value: any) => checkJSType(value, JSTypes.Promise);
+export function isPromise(value: any): boolean {
+  return checkJSType(value, JSTypes.Promise);
+}

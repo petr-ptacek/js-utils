@@ -4,4 +4,6 @@ import { checkJSType, JSTypes } from '@/helpers';
  * @param {*} value
  * @returns {boolean}
  */
-export const isNull = (value: any): boolean => checkJSType(value, JSTypes.Null);
+export function isNull(value: any): boolean {
+  return checkJSType(value, JSTypes.Null);
+}

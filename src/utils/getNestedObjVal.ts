@@ -2,9 +2,9 @@ import { isUndefined }       from './isUndefined';
 import { isNullOrUndefined } from './isNullOrUndefined';
 import { isNull }            from './isNull';
 
-export const getNestedObjVal = (
+export function getNestedObjVal(
     object: { [key: string]: any }, path: string | string[], defaultValue?: any
-): any => {
+): any {
   const chunks = Array.isArray(path) ?
       path :
       path.replace(/\[(\w+)]/g, '.$1').replace(/^\./, '').split(/\./g);
@@ -19,4 +19,4 @@ export const getNestedObjVal = (
       isUndefined(result) ?
           defaultValue :
           result;
-};
+}

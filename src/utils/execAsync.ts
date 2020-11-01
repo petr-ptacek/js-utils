@@ -7,7 +7,7 @@ export interface ExecAsyncResult<T> {
  * @param {Promise} promise
  * @returns {Promise<{ data: any, error: any }>}
  */
-export const execAsync = async <T>(promise: Promise<T>): Promise<ExecAsyncResult<T>> => {
+export async function execAsync<T>(promise: Promise<T>): Promise<ExecAsyncResult<T>> {
   const result: ExecAsyncResult<T> = { data: null, error: null };
 
   try {
@@ -17,4 +17,4 @@ export const execAsync = async <T>(promise: Promise<T>): Promise<ExecAsyncResult
   }
 
   return result;
-};
+}

@@ -4,5 +4,6 @@ import { checkJSType, JSTypes } from '@/helpers';
  * @param {*} value
  * @returns {boolean}
  */
-export const isUndefined = (value: any): boolean =>
-    checkJSType(value, JSTypes.Undefined);
+export function isUndefined(value: any): boolean {
+  return checkJSType(value, JSTypes.Undefined);
+}

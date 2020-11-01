@@ -4,5 +4,6 @@ import { checkJSType, JSTypes } from '@/helpers';
  * @param {*} value
  * @returns {boolean}
  */
-export const isObject = (value: any): boolean =>
-    !checkJSType(value, JSTypes.Null) && checkJSType(value, JSTypes.Object);
+export function isObject(value: any): boolean {
+  return !checkJSType(value, JSTypes.Null) && checkJSType(value, JSTypes.Object);
+}

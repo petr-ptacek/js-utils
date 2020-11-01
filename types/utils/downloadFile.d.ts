@@ -1,4 +1,4 @@
-export declare const downloadFile: ({ fileName, fileUrl }: {
+export declare function downloadFile({ fileName, fileUrl }: {
     fileName: string;
     fileUrl: string;
-}) => void;
+}): void;
