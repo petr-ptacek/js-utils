@@ -2,7 +2,7 @@ import { isFunction } from '@/index';
 
 describe('Utils: isFunction', () => {
 
-  it('Arrow function is function', () => {
+  it('Arrow and ES5 (style) functions', () => {
     [
       () => undefined,
       function () {
@@ -11,7 +11,7 @@ describe('Utils: isFunction', () => {
     ].forEach(fn => expect(isFunction(fn)).toBeTruthy());
   });
 
-  it('Primitive types are not a function', () => {
+  it('Other types are not a function', () => {
     [1, '', Symbol(), /regExp/, true].forEach(type => {
       expect(isFunction(type)).toBeFalsy();
     });

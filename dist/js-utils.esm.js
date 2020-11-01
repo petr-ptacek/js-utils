@@ -1,29 +1,49 @@
-const isFunction = (value) => typeof value === 'function';
-
-const isString = (value) => typeof value === 'string';
-
-const isObjectEmpty = (value) => value.constructor === Object && !Object.keys(value).length;
-
-const isObject = (value) => typeof value !== null && typeof value === 'object';
-
-const isNull = (value) => value === null;
-
-const isUndefined = (value) => typeof value === 'undefined';
-
-const isNullOrUndefined = (value) => isNull(value) || isUndefined(value);
-
-const isPromise = (value) => typeof value === 'object' && typeof value.then === 'function';
-
-const isNumber = (value) => typeof value === 'number';
-
-const isPrimitiveType = (value) => {
-    return false;
+var JSTypes;
+(function (JSTypes) {
+    JSTypes["Number"] = "[object Number]";
+    JSTypes["Object"] = "[object Object]";
+    JSTypes["String"] = "[object String]";
+    JSTypes["Function"] = "[object Function]";
+    JSTypes["Null"] = "[object Null]";
+    JSTypes["Undefined"] = "[object Undefined]";
+    JSTypes["Promise"] = "[object Promise]";
+    JSTypes["Boolean"] = "[object Boolean]";
+})(JSTypes || (JSTypes = {}));
+var checkJSType = function (value, expectedType) {
+    return Object.prototype.toString.call(value) === expectedType;
 };
 
-const toInteger = (value) => value | 0;
+var isFunction = function (value) { return checkJSType(value, JSTypes.Function); };
 
-const downloadFile = ({ fileName, fileUrl }) => {
-    const link = window.document.createElement('a');
+var isString = function (value) { return checkJSType(value, JSTypes.String); };
+
+var isObjectEmpty = function (value) {
+    return checkJSType(value, JSTypes.Object) && !Object.keys(value).length;
+};
+
+var isObject = function (value) {
+    return !checkJSType(value, JSTypes.Null) && checkJSType(value, JSTypes.Object);
+};
+
+var isNull = function (value) { return checkJSType(value, JSTypes.Null); };
+
+var isUndefined = function (value) {
+    return checkJSType(value, JSTypes.Undefined);
+};
+
+var isNullOrUndefined = function (value) { return isNull(value) || isUndefined(value); };
+
+var isPromise = function (value) { return checkJSType(value, JSTypes.Promise); };
+
+var isNumber = function (value) { return checkJSType(value, JSTypes.Number); };
+
+var isBoolean = function (value) { return checkJSType(value, JSTypes.Boolean); };
+
+var toInteger = function (value) { return value | 0; };
+
+var downloadFile = function (_a) {
+    var fileName = _a.fileName, fileUrl = _a.fileUrl;
+    var link = window.document.createElement('a');
     link.style.display = 'none';
     link.href = fileUrl;
     link.setAttribute('download', fileName);
@@ -58,38 +78,110 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
-const execAsync = (promise) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = { data: null, error: null };
-    try {
-        result.data = yield promise;
-    }
-    catch (e) {
-        result.error = e;
-    }
-    return result;
-});
-
-const uuid = ((id = 0) => (message = '') => `${message}${++id}`)();
-
-const _getStorage = (type) => type === 'session' ? window.sessionStorage : window.localStorage;
-class WindowStorage {
-    static get(key, type = 'session') {
-        return _getStorage(type).getItem(key);
-    }
-    static set(key, value, type = 'session') {
-        _getStorage(type).setItem(key, value);
-    }
-    static remove(key, type = 'session') {
-        const value = WindowStorage.get(key, type);
-        _getStorage(type).removeItem(key);
-        return value;
-    }
-    static has(key, type = 'session') {
-        return !isNull(WindowStorage.get(key, type));
-    }
-    static clear(type) {
-        _getStorage(type).clear();
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 }
 
-export { WindowStorage, downloadFile, execAsync, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPrimitiveType, isPromise, isString, isUndefined, toInteger, uuid };
+var execAsync = function (promise) { return __awaiter(void 0, void 0, void 0, function () {
+    var result, _a, e_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                result = { data: null, error: null };
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 3, , 4]);
+                _a = result;
+                return [4, promise];
+            case 2:
+                _a.data = _b.sent();
+                return [3, 4];
+            case 3:
+                e_1 = _b.sent();
+                result.error = e_1;
+                return [3, 4];
+            case 4: return [2, result];
+        }
+    });
+}); };
+
+var uuid = (function (id) {
+    if (id === void 0) { id = 0; }
+    return function (message) {
+        if (message === void 0) { message = ''; }
+        return "" + message + ++id;
+    };
+})();
+
+var _getStorage = function (type) {
+    return type === 'session' ? window.sessionStorage : window.localStorage;
+};
+var WindowStorage = (function () {
+    function WindowStorage() {
+    }
+    WindowStorage.get = function (key, type) {
+        if (type === void 0) { type = 'session'; }
+        return _getStorage(type).getItem(key);
+    };
+    WindowStorage.set = function (key, value, type) {
+        if (type === void 0) { type = 'session'; }
+        _getStorage(type).setItem(key, value);
+    };
+    WindowStorage.remove = function (key, type) {
+        if (type === void 0) { type = 'session'; }
+        var value = WindowStorage.get(key, type);
+        _getStorage(type).removeItem(key);
+        return value;
+    };
+    WindowStorage.has = function (key, type) {
+        if (type === void 0) { type = 'session'; }
+        return !isNull(WindowStorage.get(key, type));
+    };
+    WindowStorage.clear = function (type) {
+        if (!type)
+            throw new Error('WindowStorage.clear: no argument provided');
+        _getStorage(type).clear();
+    };
+    return WindowStorage;
+}());
+
+var getNestedObjVal = function (object, path, defaultValue) {
+    var chunks = Array.isArray(path) ?
+        path :
+        path.replace(/\[(\w+)]/g, '.$1').replace(/^\./, '').split(/\./g);
+    var result = object === null || object === void 0 ? void 0 : object[chunks.shift()];
+    while (chunks.length && !isNullOrUndefined(result)) {
+        result = result === null || result === void 0 ? void 0 : result[chunks.shift()];
+    }
+    return chunks.length && isNull(result) ?
+        defaultValue :
+        isUndefined(result) ?
+            defaultValue :
+            result;
+};
+
+export { WindowStorage, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, toInteger, uuid };

@@ -7,10 +7,10 @@ export { isUndefined } from './isUndefined';
 export { isNullOrUndefined } from './isNullOrUndefined';
 export { isPromise } from './isPromise';
 export { isNumber } from './isNumber';
-export { isPrimitiveType } from './isPrimitiveType';
+export { isBoolean } from './isBoolean';
 export { toInteger } from './toInteger';
 export { downloadFile } from './downloadFile';
-export { execAsync } from './execAsync.js';
+export { execAsync } from './execAsync';
 export { uuid } from './uuid';
-export { WindowStorage, windowStorageType } from './WindowStorage';
-//# sourceMappingURL=index.d.ts.map
+export { WindowStorage } from './WindowStorage';
+export { getNestedObjVal } from './getNestedObjVal';

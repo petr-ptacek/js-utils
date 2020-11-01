@@ -3,9 +3,10 @@ import { isNull } from './isNull';
 const _getStorage = (type: windowStorageType): Storage =>
     type === 'session' ? window.sessionStorage : window.localStorage;
 
-export declare type windowStorageType = 'local' | 'session'
+declare type windowStorageType = 'local' | 'session'
 
 export class WindowStorage {
+
   static get(key: string, type: windowStorageType = 'session'): string | null {
     return _getStorage(type).getItem(key);
   }
@@ -25,6 +26,7 @@ export class WindowStorage {
   }
 
   static clear(type: windowStorageType): void {
+    if ( !type ) throw new Error('WindowStorage.clear: no argument provided');
     _getStorage(type).clear();
   }
 }

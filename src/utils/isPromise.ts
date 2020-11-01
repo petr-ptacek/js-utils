@@ -1,5 +1,7 @@
+import { checkJSType, JSTypes } from '@/helpers';
+
 /**
  * @param {*} value
  * @returns {boolean}
  */
-export const isPromise = (value: any) => typeof value === 'object' && typeof value.then === 'function';
+export const isPromise = (value: any) => checkJSType(value, JSTypes.Promise);

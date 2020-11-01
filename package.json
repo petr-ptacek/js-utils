@@ -6,11 +6,12 @@
   "module": "./dist/js-utils.esm.js",
   "types": "./types/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist ./types",
-    "build:types": "tsc --declaration --declarationMap --emitDeclarationOnly --declarationDir ./types",
-    "build": "npm run clean && rollup -c && npm run build:types",
-    "test": "jest --config ./jest.config.js",
-    "test:watch": "npm run test -- --watchAll --notify"
+    "build:types": "rimraf ./types && tsc -p ./tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir ./types",
+    "build:src": "rimraf ./dist && rollup -c",
+    "build": "npm run build:types & npm run build:src",
+    "test:watchAll": "npm run test -- --watchAll",
+    "test:watch": "npm run test -- --watch --notify",
+    "test": "jest --config ./jest.config.js"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",

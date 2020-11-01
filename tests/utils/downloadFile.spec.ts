@@ -1,6 +1,6 @@
 import { downloadFile } from '@/index';
 
-describe('Utils: downloadFile', () => {
+describe.only('Utils: downloadFile', () => {
 
   let anchorElement: HTMLAnchorElement = null,
       spyCreateEl: jest.SpyInstance,
@@ -11,16 +11,20 @@ describe('Utils: downloadFile', () => {
   const fileUrl = `/path/to/${ fileName }`;
 
   beforeAll(() => {
-    anchorElement = window.document.createElement('a');
-    jest.spyOn(anchorElement, 'click');
-    jest.spyOn(anchorElement, 'setAttribute');
-
-    spyCreateEl = jest.spyOn(window.document, 'createElement').mockReturnValue(anchorElement);
     spyAppendChild = jest.spyOn(window.document.body, 'appendChild');
     spyRemoveChild = jest.spyOn(window.document.body, 'removeChild');
   });
 
   beforeEach(() => {
+    if ( spyCreateEl ) spyCreateEl.mockRestore();
+    anchorElement = window.document.createElement('a');
+
+    jest.spyOn(anchorElement, 'click');
+    jest.spyOn(anchorElement, 'setAttribute');
+
+    spyCreateEl = jest.spyOn(window.document, 'createElement')
+        .mockReturnValue(anchorElement);
+
     downloadFile({ fileName, fileUrl });
   });
 
