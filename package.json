@@ -6,7 +6,7 @@
   "module": "./dist/js-utils.esm.js",
   "types": "./types/index.d.ts",
   "scripts": {
-    "build:types": "rimraf ./types && tsc -p ./tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir ./types",
+    "build:types": "rimraf ./types && ttsc -p ./tsconfig.types.json",
     "build:src": "rimraf ./dist && rollup -c",
     "build": "npm run build:types & npm run build:src",
     "test:watchAll": "npm run test -- --watchAll",
@@ -21,7 +21,9 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.27.3",
     "ts-jest": "^26.4.1",
-    "typescript": "^4.0.3"
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.0.3",
+    "typescript-transform-paths": "^2.0.2"
   },
   "engines": {
     "node": ">=12.0.0"
