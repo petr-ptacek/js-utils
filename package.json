@@ -2,6 +2,14 @@
   "name": "@petr-ptacek/js-utils",
   "version": "1.0.0",
   "description": "JavaScript library with helper functions.",
+  "keywords": [
+    "JavaScript",
+    "utils",
+    "helpers"
+  ],
+  "homepage": "https://github.com/petr-ptacek/js-utils",
+  "private": false,
+  "license": "UNLICENSED",
   "main": "./dist/js-utils.cmj.min.js",
   "module": "./dist/js-utils.esm.js",
   "types": "./types/index.d.ts",
@@ -27,6 +35,10 @@
   },
   "engines": {
     "node": ">=12.0.0"
+  },
+  "author": {
+    "name": "Petr Ptacek",
+    "email": "petr.ptacek99@gmail.com"
   },
   "repository": {
     "type": "git",
