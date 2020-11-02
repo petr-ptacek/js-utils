@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "emitDeclarationOnly": true,
     "declaration": true,
-    "declarationDir": "types",
+    "emitDeclarationOnly": true,
+    "declarationDir": "../types",
     "plugins": [
       {
         "transform": "typescript-transform-paths",

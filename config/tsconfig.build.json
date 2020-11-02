@@ -1,0 +1,15 @@
+{
+  "extends": "./../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../src",
+    "incremental": true,
+    "tsBuildInfoFile": "../.cache/tsbuildinfo/.tsbuildinfo"
+  },
+  "include": [
+    "../src/**/*"
+  ],
+  "exclude": [
+    "../tests/**/*",
+    "../**/*.spec.ts"
+  ]
+}

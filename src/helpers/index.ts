@@ -14,5 +14,6 @@ export enum JSTypes {
  * @param {JSTypes} expectedType
  * @returns {string}
  */
-export const checkJSType = (value: any, expectedType: JSTypes): boolean =>
-    Object.prototype.toString.call(value) === expectedType;
+export function checkJSType(value: any, expectedType: JSTypes): boolean {
+  return Object.prototype.toString.call(value) === expectedType;
+}

@@ -9,9 +9,9 @@ var JSTypes;
     JSTypes["Promise"] = "[object Promise]";
     JSTypes["Boolean"] = "[object Boolean]";
 })(JSTypes || (JSTypes = {}));
-var checkJSType = function (value, expectedType) {
+function checkJSType(value, expectedType) {
     return Object.prototype.toString.call(value) === expectedType;
-};
+}
 
 function isFunction(value) {
     return checkJSType(value, JSTypes.Function);

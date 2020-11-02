@@ -8,4 +8,4 @@ export declare enum JSTypes {
     Promise = "[object Promise]",
     Boolean = "[object Boolean]"
 }
-export declare const checkJSType: (value: any, expectedType: JSTypes) => boolean;
+export declare function checkJSType(value: any, expectedType: JSTypes): boolean;

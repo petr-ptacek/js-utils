@@ -9,13 +9,13 @@ const config = {
   restoreMocks: false,
   testEnvironment: 'jsdom', // node,
   testEnvironmentOptions: {},
-  cacheDirectory: path.resolve(__dirname, 'node_modules/.cache/jest'),
+  cacheDirectory: path.resolve(__dirname, '../.cache'),
   verbose: true,
   testMatch: [
     '**/(__tests__|tests)/**/*.ts?(x)',
     '**/?(*.)+(spec|test).ts?(x)'
   ],
-  rootDir: __dirname,
+  rootDir: path.resolve(__dirname, '..'),
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },

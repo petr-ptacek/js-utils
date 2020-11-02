@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
     "removeComments": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
