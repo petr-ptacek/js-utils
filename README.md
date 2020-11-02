@@ -2,6 +2,14 @@
 
 The JavaScript useful functions.
 
+## Usage
+```javascript
+import { someFunction } from "@petr-ptacek/js-utils";
+
+/** Usage */
+const foo = someFunction(/* arguments */);
+```
+
 ## Documentation
 
 - [downloadFile](./docs/utils/downloadFile.md)
