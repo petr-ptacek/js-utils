@@ -2,12 +2,22 @@
 
 The JavaScript useful functions.
 
+## Installation
+`npm install --save-dev @petr-ptacek/js-utils`
+
 ## Usage
 ```javascript
 import { someFunction } from "@petr-ptacek/js-utils";
 
 /** Usage */
 const foo = someFunction(/* arguments */);
+```
+
+```javascript
+import * as jsUtils from "@petr-ptacek/js-utils";
+
+/** Usage */
+const foo = jsUtils.someFunction(/* arguments */);
 ```
 
 ## Documentation
