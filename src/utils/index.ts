@@ -14,3 +14,4 @@ export { execAsync }         from './execAsync';
 export { uuid }              from './uuid';
 export { WindowStorage }     from './WindowStorage';
 export { getNestedObjVal }   from './getNestedObjVal';
+export { debounce }          from './debounce';

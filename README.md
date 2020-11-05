@@ -37,3 +37,4 @@ const foo = jsUtils.someFunction(/* arguments */);
 - [toInteger](./docs/utils/toInteger.md)
 - [uuid](./docs/utils/uuid.md)
 - [WindowStorage](./docs/utils/WindowStorage.md)
+- [debounce](./docs/utils/debounce.md)

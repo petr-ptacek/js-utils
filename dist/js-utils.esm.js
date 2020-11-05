@@ -84,6 +84,17 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 function __awaiter(thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -206,4 +217,25 @@ function getNestedObjVal(object, path, defaultValue) {
             result;
 }
 
-export { WindowStorage, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, toInteger, uuid };
+function debounce(fn, options) {
+    var _a = __assign({ wait: 100, immediate: false }, (options || {})), wait = _a.wait, immediate = _a.immediate;
+    var timeoutId = null;
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var context = this;
+        var callImmediate = immediate && isNull(timeoutId);
+        var next = function () {
+            timeoutId = null;
+            if (!immediate)
+                fn.apply(context, args);
+        };
+        !isNull(timeoutId) && clearTimeout(timeoutId);
+        timeoutId = setTimeout(next, wait);
+        callImmediate && fn.apply(context, args);
+    };
+}
+
+export { WindowStorage, debounce, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, toInteger, uuid };
