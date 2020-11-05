@@ -1,9 +1,8 @@
-declare type windowStorageType = 'local' | 'session';
+export declare type WindowStorageType = 'local' | 'session';
 export declare class WindowStorage {
-    static get(key: string, type?: windowStorageType): string | null;
-    static set(key: string, value: string, type?: windowStorageType): void;
-    static remove(key: string, type?: windowStorageType): string | null;
-    static has(key: string, type?: windowStorageType): boolean;
-    static clear(type: windowStorageType): void;
+    static get(key: string, type?: WindowStorageType): string | null;
+    static set(key: string, value: string, type?: WindowStorageType): void;
+    static remove(key: string, type?: WindowStorageType): string | null;
+    static has(key: string, type?: WindowStorageType): boolean;
+    static clear(type: WindowStorageType): void;
 }
-export {};

@@ -12,6 +12,18 @@ export { toInteger }         from './toInteger';
 export { downloadFile }      from './downloadFile';
 export { execAsync }         from './execAsync';
 export { uuid }              from './uuid';
-export { WindowStorage }     from './WindowStorage';
+export {
+  WindowStorage,
+  WindowStorageType
+}                            from './WindowStorage';
 export { getNestedObjVal }   from './getNestedObjVal';
-export { debounce }          from './debounce';
+export {
+  debounce,
+  DebounceOptions,
+  DebounceProcedure
+}                            from './debounce';
+export {
+  throttle,
+  ThrottleOptions,
+  ThrottleProcedure
+}                            from './throttle';

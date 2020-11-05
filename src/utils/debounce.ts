@@ -17,15 +17,14 @@ export function debounce<F extends DebounceProcedure>(fn: F, options?: DebounceO
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
   return function (this: ThisParameterType<F>, ...args: Parameters<F>) {
-    const context = this;
     const callImmediate = immediate && isNull(timeoutId);
     const next = () => {
       timeoutId = null;
-      if ( !immediate ) fn.apply(context, args);
+      if ( !immediate ) fn.apply(this, args);
     };
 
     !isNull(timeoutId) && clearTimeout(timeoutId);
     timeoutId = setTimeout(next, wait);
-    callImmediate && fn.apply(context, args);
+    callImmediate && fn.apply(this, args);
   };
 }

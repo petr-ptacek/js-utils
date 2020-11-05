@@ -1,6 +1,6 @@
 import { isNull } from './isNull';
 
-declare type WindowStorageType = 'local' | 'session'
+export declare type WindowStorageType = 'local' | 'session'
 
 const _getStorage = (type: WindowStorageType): Storage =>
     type === 'session' ? window.sessionStorage : window.localStorage;

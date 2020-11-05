@@ -1,5 +1,5 @@
 ## [js-utils](./../../README.md)
 
-## *debounce*
+## *throttle*
 
 > TODO ....

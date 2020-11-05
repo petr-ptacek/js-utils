@@ -38,3 +38,4 @@ const foo = jsUtils.someFunction(/* arguments */);
 - [uuid](./docs/utils/uuid.md)
 - [WindowStorage](./docs/utils/WindowStorage.md)
 - [debounce](./docs/utils/debounce.md)
+- [throttle](./docs/utils/throttle.md)

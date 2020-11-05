@@ -221,21 +221,39 @@ function debounce(fn, options) {
     var _a = __assign({ wait: 100, immediate: false }, (options || {})), wait = _a.wait, immediate = _a.immediate;
     var timeoutId = null;
     return function () {
+        var _this = this;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        var context = this;
         var callImmediate = immediate && isNull(timeoutId);
         var next = function () {
             timeoutId = null;
             if (!immediate)
-                fn.apply(context, args);
+                fn.apply(_this, args);
         };
         !isNull(timeoutId) && clearTimeout(timeoutId);
         timeoutId = setTimeout(next, wait);
-        callImmediate && fn.apply(context, args);
+        callImmediate && fn.apply(this, args);
     };
 }
 
-export { WindowStorage, debounce, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, toInteger, uuid };
+function throttle(fn, options) {
+    var delay = __assign({ delay: 100 }, (options || {})).delay;
+    var timeoutId = null;
+    return function () {
+        var _this = this;
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (!isNull(timeoutId))
+            return;
+        timeoutId = setTimeout(function () {
+            fn.apply(_this, args);
+            timeoutId = null;
+        }, delay);
+    };
+}
+
+export { WindowStorage, debounce, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, throttle, toInteger, uuid };
