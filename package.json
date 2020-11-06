@@ -1,6 +1,6 @@
 {
   "name": "@petr-ptacek/js-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript library with helper functions.",
   "scripts": {
     "build": "npm run build:types && npm run build:src",
