@@ -6,6 +6,8 @@ export declare enum JSTypes {
     Null = "[object Null]",
     Undefined = "[object Undefined]",
     Promise = "[object Promise]",
-    Boolean = "[object Boolean]"
+    Boolean = "[object Boolean]",
+    BigInt = "[object BigInt]",
+    Symbol = "[object Symbol]"
 }
-export declare function checkJSType(value: any, expectedType: JSTypes): boolean;
+export declare function checkJSType(value: unknown, expectedType: JSTypes): boolean;

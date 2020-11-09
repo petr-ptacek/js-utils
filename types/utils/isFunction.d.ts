@@ -1,1 +1,1 @@
-export declare function isFunction(value: any): boolean;
+export declare function isFunction(value: unknown): boolean;

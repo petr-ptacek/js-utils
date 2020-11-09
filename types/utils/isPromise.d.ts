@@ -1,1 +1,1 @@
-export declare function isPromise(value: any): boolean;
+export declare function isPromise(value: unknown): boolean;

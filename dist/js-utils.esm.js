@@ -8,6 +8,8 @@ var JSTypes;
     JSTypes["Undefined"] = "[object Undefined]";
     JSTypes["Promise"] = "[object Promise]";
     JSTypes["Boolean"] = "[object Boolean]";
+    JSTypes["BigInt"] = "[object BigInt]";
+    JSTypes["Symbol"] = "[object Symbol]";
 })(JSTypes || (JSTypes = {}));
 function checkJSType(value, expectedType) {
     return Object.prototype.toString.call(value) === expectedType;
@@ -37,7 +39,7 @@ function isUndefined(value) {
     return checkJSType(value, JSTypes.Undefined);
 }
 
-function isNullOrUndefined(value) {
+function isNullable(value) {
     return isNull(value) || isUndefined(value);
 }
 
@@ -51,6 +53,14 @@ function isNumber(value) {
 
 function isBoolean(value) {
     return checkJSType(value, JSTypes.Boolean);
+}
+
+function isSymbol(value) {
+    return checkJSType(value, JSTypes.Symbol);
+}
+
+function isBigInt(value) {
+    return checkJSType(value, JSTypes.BigInt);
 }
 
 function toInteger(value) {
@@ -207,7 +217,7 @@ function getNestedObjVal(object, path, defaultValue) {
         path :
         path.replace(/\[(\w+)]/g, '.$1').replace(/^\./, '').split(/\./g);
     var result = object === null || object === void 0 ? void 0 : object[chunks.shift()];
-    while (chunks.length && !isNullOrUndefined(result)) {
+    while (chunks.length && !isNullable(result)) {
         result = result === null || result === void 0 ? void 0 : result[chunks.shift()];
     }
     return chunks.length && isNull(result) ?
@@ -242,18 +252,17 @@ function throttle(fn, options) {
     var delay = __assign({ delay: 100 }, (options || {})).delay;
     var timeoutId = null;
     return function () {
-        var _this = this;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
         if (!isNull(timeoutId))
             return;
+        fn.apply(this, args);
         timeoutId = setTimeout(function () {
-            fn.apply(_this, args);
             timeoutId = null;
         }, delay);
     };
 }
 
-export { WindowStorage, debounce, downloadFile, execAsync, getNestedObjVal, isBoolean, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isObjectEmpty, isPromise, isString, isUndefined, throttle, toInteger, uuid };
+export { WindowStorage, debounce, downloadFile, execAsync, getNestedObjVal, isBigInt, isBoolean, isFunction, isNull, isNullable, isNumber, isObject, isObjectEmpty, isPromise, isString, isSymbol, isUndefined, throttle, toInteger, uuid };
