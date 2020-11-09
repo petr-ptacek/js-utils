@@ -6,7 +6,9 @@ export enum JSTypes {
   Null = '[object Null]',
   Undefined = '[object Undefined]',
   Promise = '[object Promise]',
-  Boolean = '[object Boolean]'
+  Boolean = '[object Boolean]',
+  BigInt = '[object BigInt]',
+  Symbol = '[object Symbol]'
 }
 
 /**
@@ -14,6 +16,6 @@ export enum JSTypes {
  * @param {JSTypes} expectedType
  * @returns {string}
  */
-export function checkJSType(value: any, expectedType: JSTypes): boolean {
+export function checkJSType(value: unknown, expectedType: JSTypes): boolean {
   return Object.prototype.toString.call(value) === expectedType;
 }

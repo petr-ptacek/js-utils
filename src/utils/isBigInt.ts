@@ -4,6 +4,6 @@ import { checkJSType, JSTypes } from '@/helpers';
  * @param {*} value
  * @returns {boolean}
  */
-export function isNull(value: unknown): boolean {
-  return checkJSType(value, JSTypes.Null);
+export function isBigInt(value: unknown): boolean {
+  return checkJSType(value, JSTypes.BigInt);
 }
